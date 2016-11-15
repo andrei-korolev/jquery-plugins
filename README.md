@@ -1,1 +1,1 @@
-# jquery-plugins
+# plugins
