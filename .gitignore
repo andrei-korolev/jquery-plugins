@@ -1,0 +1,9 @@
+.idea/
+node_modules/
+
+# Styles
+styles/common/icons.less
+styles/custom.css
+
+# Scripts
+scripts/bundle.js

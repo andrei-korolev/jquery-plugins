@@ -1,0 +1,57 @@
+// Fonts
+@font-family: Helvetica, Arial, sans-serif;
+
+.font-face(@file-name, @font-family, @font-name, @font-weight: 400, @font-style: normal) {
+    @font-face {
+        font-family: @font-family;
+        src: url("@{src-fonts}/@{file-name}.woff") format("woff");
+        font-weight: @font-weight;
+        font-style: @font-style;
+    }
+}
+
+.font-face(gibson_light, Gibson, robotolight, 300);
+.font-face(gibson_regular, Gibson, robotoregular, 400);
+.font-face(gibson_bold, Gibson, robotobold, 700);
+
+.font-thin() {
+    font-family: Gibson, @font-family;
+    font-weight: 100;
+    font-style: normal;
+}
+
+.font-light() {
+    font-family: Gibson, @font-family;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.font-regular() {
+    font-family: Gibson, @font-family;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.font-medium() {
+    font-family: Gibson, @font-family;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.font-bold() {
+    font-family: Gibson, @font-family;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.font-italic() {
+    font-family: Gibson, @font-family;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.font-medium-italic() {
+    font-family: Gibson, @font-family;
+    font-weight: 500;
+    font-style: italic;
+}
