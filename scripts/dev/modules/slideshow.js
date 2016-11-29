@@ -4,7 +4,7 @@ let nc = window.nc || {},
     ncModules = nc.modules || {};
 
 
-ncModules.module = (function() {
+ncModules.slideshow = ( () => {
 
     function init() {
         initVars();
@@ -21,19 +21,15 @@ ncModules.module = (function() {
     }
 
 
-    
     init();
     
-    
-    
+
     /*Public Api*/
     return {};
-
 
     
     /*Helpers*/
     function onClick() {}
-    
-    
-    
+
+
 })();

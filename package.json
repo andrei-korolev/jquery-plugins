@@ -1,11 +1,11 @@
 {
-  "name": "My Plugins",
+  "name": "Plugins",
   "version": "1.0.0-SNAPSHOT",
   "description": "Description",
   "main": "gulpfile.js",
   "repository": {
-    "type": "",
-    "url": ""
+    "type": "Git",
+    "url": "https://github.com/andrei-korolev/plugins"
   },
   "author": "NetCracker Technology Corp.",
   "license": "The MIT License (MIT)",
