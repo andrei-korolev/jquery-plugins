@@ -12,31 +12,38 @@
 </head>
 <body>
 
-    <div class="slideshow">
+    <div class="wrapper">
 
-        <div class="slideshow__display">
-            <img src="http://lorempixel.com/400/250" alt="" class="slideshow__image _main">
+        <div class="slideshow">
+            <div class="slideshow__display">
+                <img src="http://lorempixel.com/400/250" alt="" class="slideshow__image _main">
+            </div>
+            <ul class="slideshow__list">
+                <li class="slideshow__item">
+                    <img src="../images/slideshow/miniature/1.jpg" alt="" class="slideshow__image" data-src="../images/slideshow/display/1.jpg">
+                </li>
+                <li class="slideshow__item">
+                    <img src="../images/slideshow/display/2.jpg" alt="" class="slideshow__image">
+                </li>
+                <li class="slideshow__item">
+                    <img src="../images/slideshow/miniature/3.jpg" alt="" class="slideshow__image" data-src="../images/slideshow/display/3.jpg">
+                </li>
+                <li class="slideshow__item">
+                    <img src="../images/slideshow/display/4.jpg" alt="" class="slideshow__image">
+                </li>
+                <li class="slideshow__item">
+                    <img src="../images/slideshow/miniature/5.jpg" alt="" class="slideshow__image" data-src="../images/slideshow/display/5.jpg">
+                </li>
+            </ul>
         </div>
-        <ul class="slideshow__list">
-            <li class="slideshow__item">
-                <img src="http://lorempixel.com/100/100" alt="" class="slideshow__image">
-            </li>
-            <li class="slideshow__item">
-                <img src="http://lorempixel.com/100/100" alt="" class="slideshow__image">
-            </li>
-            <li class="slideshow__item">
-                <img src="http://lorempixel.com/100/100" alt="" class="slideshow__image">
-            </li>
-            <li class="slideshow__item">
-                <img src="http://lorempixel.com/100/100" alt="" class="slideshow__image">
-            </li>
-            <li class="slideshow__item">
-                <img src="http://lorempixel.com/100/100" alt="" class="slideshow__image">
-            </li>
-        </ul>
 
     </div>
 
     <script src="../scripts/bundle.js"></script>
+    <script>
+        var element = document.querySelector('.slideshow');
+
+        ncModules.slideshow(element);
+    </script>
 </body>
 </html>
