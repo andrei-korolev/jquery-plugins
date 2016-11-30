@@ -13,8 +13,8 @@ ncModules.slideshow = ( () => {
         initVars(element);
         bindEvents();
     }
-    
-    
+
+
     function initVars(element) {
         myObj.display = myObj.main.querySelector('.slideshow__display');
         myObj.mainImage = myObj.display.querySelector('.slideshow__image');
@@ -26,7 +26,7 @@ ncModules.slideshow = ( () => {
         console.log(myObj.duration);
     }
 
-    
+
     function bindEvents() {
         /*events*/
         myObj.list.addEventListener('click', changeImage);
@@ -44,7 +44,7 @@ ncModules.slideshow = ( () => {
         }
     };
 
-    
+
     /*Helpers*/
 
     /*To change the picture of the main container*/

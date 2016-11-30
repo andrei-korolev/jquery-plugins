@@ -43,7 +43,13 @@
     <script>
         var element = document.querySelector('.slideshow');
 
-        ncModules.slideshow(element);
+//        ncModules.slideshow(element);
+
+        slideshowModule = ncModules.slideshow();
+
+        slideshow1 = slideshowModule({
+            element: element
+        });
     </script>
 </body>
 </html>
