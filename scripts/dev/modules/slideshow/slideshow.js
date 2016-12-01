@@ -1,12 +1,18 @@
 'use strict';
 
-let nc = window.nc || {},
-    ncModules = nc.modules || {};
+let nc = window.nc || {};
+    nc.modules = nc.modules || {};
 
 
-ncModules.slideshow = ( () => {
+nc.modules.slideshow = ( () => {
 
-    let myObj = {};
+    let myObj = {},
+        SELECTORS = {
+            display: 'slideshow__display',
+            list: 'slideshow__list',
+            item: 'slideshow__item',
+            image: 'slideshow__image'
+        };
 
 
     function init(element) {
@@ -16,14 +22,12 @@ ncModules.slideshow = ( () => {
 
 
     function initVars(element) {
-        myObj.display = myObj.main.querySelector('.slideshow__display');
-        myObj.mainImage = myObj.display.querySelector('.slideshow__image');
-        myObj.list = myObj.main.querySelector('.slideshow__list');
-        myObj.duration = parseInt(getComputedStyle(myObj.mainImage).transitionDuration) * 1000;
+        myObj.display = myObj.main.querySelector('.' + SELECTORS.display);
+        myObj.mainImage = myObj.display.querySelector('.' + SELECTORS.image);
+        myObj.list = myObj.main.querySelector('.' + SELECTORS.list);
+        myObj.duration = parseInt(getComputedStyle(myObj.mainImage).transitionDuration) * 500;
 
         changeImage = debounce(changeImage, myObj.duration);
-
-        console.log(myObj.duration);
     }
 
 
@@ -42,6 +46,8 @@ ncModules.slideshow = ( () => {
         return {
 
         }
+
+
     };
 
 
@@ -51,13 +57,13 @@ ncModules.slideshow = ( () => {
     function changeImage(e) {
         let target = e.target;
 
-        myObj.item = target.closest('.slideshow__item');
+        myObj.item = target.closest('.' + SELECTORS.item);
 
         if (!myObj.item || myObj.item === myObj.lastItem) {
             return;
         }
 
-        myObj.image = myObj.item.querySelector('.slideshow__image');
+        myObj.image = myObj.item.querySelector('.' + SELECTORS.image);
         myObj.src = getNewSrc();
         myObj.lastItem = myObj.item;
 
@@ -81,12 +87,9 @@ ncModules.slideshow = ( () => {
     function hideImage() {
         myObj.mainImage.style.opacity = 0;
 
-        console.log("done hide");
-
         setTimeout(() => {
             setNewSrc();
             showImage();
-            console.log(myObj.duration);
         }, myObj.duration);
     }
 
@@ -94,7 +97,6 @@ ncModules.slideshow = ( () => {
     /*Show image*/
     function showImage() {
         myObj.mainImage.style.opacity = 1;
-        console.log("done show");
     }
 
 

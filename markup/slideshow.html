@@ -41,13 +41,11 @@
 
     <script src="../scripts/bundle.js"></script>
     <script>
-        var element = document.querySelector('.slideshow');
+        let element = document.querySelector('.slideshow');
 
-//        ncModules.slideshow(element);
+//        nc.modules.slideshow(element);
 
-        slideshowModule = ncModules.slideshow();
-
-        slideshow1 = slideshowModule({
+        new nc.modules.slideshowClass({
             element: element
         });
     </script>

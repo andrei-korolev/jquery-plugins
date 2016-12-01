@@ -1,12 +1,17 @@
 'use strict';
 
-let nc = window.nc || {},
-    ncModules = nc.modules || {};
+let nc = window.nc || {};
+    nc.modules = nc.modules || {};
 
+nc.modules.slideshowClass = ( () => {
 
-ncModules.slideshow = ( () => {
-
-    let self;
+    let self,
+        SELECTORS = {
+            display: 'slideshow__display',
+            list: 'slideshow__list',
+            item: 'slideshow__item',
+            image: 'slideshow__image'
+        };
 
     class Slideshow {
         constructor(options) {
@@ -23,16 +28,9 @@ ncModules.slideshow = ( () => {
 
 
         initVars() {
-            this.SELECTORS = {
-                display: 'slideshow__display',
-                list: 'slideshow__list',
-                item: 'slideshow__item',
-                image: 'slideshow__image'
-            };
-
-            this.display = this.parent.querySelector('.' + this.SELECTORS.display);
-            this.mainImage = this.display.querySelector('.' + this.SELECTORS.image);
-            this.list = this.parent.querySelector('.' + this.SELECTORS.list);
+            this.display = this.parent.querySelector('.' + SELECTORS.display);
+            this.mainImage = this.display.querySelector('.' + SELECTORS.image);
+            this.list = this.parent.querySelector('.' + SELECTORS.list);
             this.duration = parseInt(getComputedStyle(this.mainImage).transitionDuration) * 500;
 
             changeImage = debounce(changeImage, this.duration);
@@ -52,13 +50,13 @@ ncModules.slideshow = ( () => {
     function changeImage(e) {
         let target = e.target;
 
-        self.item = target.closest('.' + self.SELECTORS.item);
+        self.item = target.closest('.' + SELECTORS.item);
 
         if (!self.item || self.item === self.lastItem) {
             return;
         }
 
-        self.image = self.item.querySelector('.' + self.SELECTORS.image);
+        self.image = self.item.querySelector('.' + SELECTORS.image);
         self.src = getNewSrc();
         self.lastItem = self.item;
 
@@ -114,9 +112,7 @@ ncModules.slideshow = ( () => {
     }
 
 
-    return () => {
-        return (options) => {
-            return new Slideshow(options);
-        }
-    }
+    return Slideshow;
+
+
 })();
