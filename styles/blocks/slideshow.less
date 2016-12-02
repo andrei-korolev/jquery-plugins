@@ -13,6 +13,7 @@
 
     &__list {
         display: flex;
+        margin-top: 10px;
         justify-content: space-between;
     }
 
@@ -24,6 +25,11 @@
         align-items: center;
         justify-content: center;
         cursor: pointer;
+
+        &._active {
+            border-color: transparent;
+            box-shadow: 0 0 19px 3px @purple-77;
+        }
     }
 
     &__image {

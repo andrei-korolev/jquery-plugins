@@ -11,7 +11,8 @@ nc.modules.slideshow = ( () => {
             display: 'slideshow__display',
             list: 'slideshow__list',
             item: 'slideshow__item',
-            image: 'slideshow__image'
+            image: 'slideshow__image',
+            active: '_active'
         };
 
 
@@ -25,6 +26,7 @@ nc.modules.slideshow = ( () => {
         myObj.display = myObj.main.querySelector('.' + SELECTORS.display);
         myObj.mainImage = myObj.display.querySelector('.' + SELECTORS.image);
         myObj.list = myObj.main.querySelector('.' + SELECTORS.list);
+        myObj.lastItem = myObj.list.querySelector('.' + SELECTORS.active) || null;
         myObj.duration = parseInt(getComputedStyle(myObj.mainImage).transitionDuration) * 500;
 
         changeImage = debounce(changeImage, myObj.duration);
@@ -65,6 +67,9 @@ nc.modules.slideshow = ( () => {
 
         myObj.image = myObj.item.querySelector('.' + SELECTORS.image);
         myObj.src = getNewSrc();
+
+        changeActiveMiniature();
+
         myObj.lastItem = myObj.item;
 
         hideImage();
@@ -80,6 +85,16 @@ nc.modules.slideshow = ( () => {
     /*Set new src*/
     function setNewSrc() {
         myObj.mainImage.src = myObj.src;
+    }
+
+
+    /*Change active miniature*/
+    function changeActiveMiniature() {
+        myObj.item.classList.add(SELECTORS.active);
+
+        if (myObj.lastItem) {
+            myObj.lastItem.classList.remove(SELECTORS.active);
+        }
     }
 
 
@@ -117,5 +132,6 @@ nc.modules.slideshow = ( () => {
             }
         }
     }
+
 
 })();
