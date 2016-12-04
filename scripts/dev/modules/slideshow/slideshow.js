@@ -27,7 +27,7 @@ nc.modules.slideshow = ( () => {
         myObj.mainImage = myObj.display.querySelector('.' + SELECTORS.image);
         myObj.list = myObj.main.querySelector('.' + SELECTORS.list);
         myObj.lastItem = myObj.list.querySelector('.' + SELECTORS.active) || null;
-        myObj.duration = parseInt(getComputedStyle(myObj.mainImage).transitionDuration) * 500;
+        myObj.duration = parseInt(getComputedStyle(myObj.mainImage).transitionDuration) * 500 || 500;
 
         changeImage = debounce(changeImage, myObj.duration);
     }
