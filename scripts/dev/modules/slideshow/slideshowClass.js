@@ -1,7 +1,9 @@
 'use strict';
 
+
 let nc = window.nc || {};
     nc.modules = nc.modules || {};
+
 
 nc.modules.slideshowClass = ( () => {
 

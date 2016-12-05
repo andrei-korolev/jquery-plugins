@@ -89,8 +89,6 @@ gulp.task('build', ['icons', 'less', 'js'], () => {
 /**
  * Watch
  */
-gulp.watch('styles/**/*', ['less']);
-
 gulp.task('watch', () => {
 
     gulp.watch('styles/**/*', ['less']);

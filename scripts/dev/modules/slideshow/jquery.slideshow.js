@@ -1,19 +1,21 @@
 ;(function($) {
     'use strict';
 
-    $.fn.slideshow = function() {
 
-        const SELECTORS = {
-            display: 'slideshow__display',
-            list: 'slideshow__list',
-            item: 'slideshow__item',
-            image: 'slideshow__image',
-            active: '_active'
-        },
-            TEXT = {
-                src: 'src',
-                transitionDuration: 'transition-duration'
-        };
+    const SELECTORS = {
+        display: 'slideshow__display',
+        list: 'slideshow__list',
+        item: 'slideshow__item',
+        image: 'slideshow__image',
+        active: '_active'
+    },
+    TEXT = {
+        src: 'src',
+        transitionDuration: 'transition-duration'
+    };
+
+
+    $.fn.slideshow = function() {
 
         let $display,
             $image,
@@ -70,7 +72,7 @@
 
             $item = $(target.closest('.' + SELECTORS.item));
 
-            if (!$item || $item === $lastItem) {
+            if ($item.length === 0 || $item.hasClass(SELECTORS.active)) {
                 return;
             }
 
@@ -100,10 +102,7 @@
         /*Change active miniature*/
         function changeActiveMiniature() {
             $item.addClass(SELECTORS.active);
-
-            if ($lastItem.length) {
-                $lastItem.removeClass(SELECTORS.active);
-            }
+            $lastItem.removeClass(SELECTORS.active);
         }
 
 
