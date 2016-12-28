@@ -46,15 +46,9 @@ nc.modules.sliderClass = ( () => {
 
 
         bindEvents() {
-            let self = this;
+            this.arrowLeft.addEventListener('click', clickLeft.bind(this));
 
-            this.arrowLeft.addEventListener('click', (e) => {
-                clickLeft.call(self, e);
-            });
-
-            this.arrowRight.addEventListener('click', (e) => {
-                clickRight.call(self, e);
-            });
+            this.arrowRight.addEventListener('click', clickRight.bind(this));
         }
     }
 

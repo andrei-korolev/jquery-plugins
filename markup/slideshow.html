@@ -14,43 +14,80 @@
 
     <div class="wrapper">
 
-        <div class="slideshow">
-            <div class="slideshow__display">
-                <img src="../images/slideshow/display/1.jpg" alt="" class="slideshow__image _main">
+        <div class="wrapper__item">
+            <div class="slideshow" id="slideshow-1">
+                <div class="slideshow__display">
+                    <img src="../images/slideshow/display/1.jpg" alt="" class="slideshow__image _main">
+                </div>
+
+                <ul class="slideshow__list">
+                    <li class="slideshow__item _active">
+                        <img src="../images/slideshow/miniature/1.jpg" alt="" class="slideshow__image" data-src="../images/slideshow/display/1.jpg">
+                    </li>
+                    <li class="slideshow__item">
+                        <img src="../images/slideshow/display/2.jpg" alt="" class="slideshow__image">
+                    </li>
+                    <li class="slideshow__item">
+                        <img src="../images/slideshow/miniature/3.jpg" alt="" class="slideshow__image" data-src="../images/slideshow/display/3.jpg">
+                    </li>
+                    <li class="slideshow__item">
+                        <img src="../images/slideshow/display/4.jpg" alt="" class="slideshow__image">
+                    </li>
+                    <li class="slideshow__item">
+                        <img src="../images/slideshow/miniature/5.jpg" alt="" class="slideshow__image" data-src="../images/slideshow/display/5.jpg">
+                    </li>
+                </ul>
+
             </div>
-            <ul class="slideshow__list">
-                <li class="slideshow__item _active">
-                    <img src="../images/slideshow/miniature/1.jpg" alt="" class="slideshow__image" data-src="../images/slideshow/display/1.jpg">
-                </li>
-                <li class="slideshow__item">
-                    <img src="../images/slideshow/display/2.jpg" alt="" class="slideshow__image">
-                </li>
-                <li class="slideshow__item">
-                    <img src="../images/slideshow/miniature/3.jpg" alt="" class="slideshow__image" data-src="../images/slideshow/display/3.jpg">
-                </li>
-                <li class="slideshow__item">
-                    <img src="../images/slideshow/display/4.jpg" alt="" class="slideshow__image">
-                </li>
-                <li class="slideshow__item">
-                    <img src="../images/slideshow/miniature/5.jpg" alt="" class="slideshow__image" data-src="../images/slideshow/display/5.jpg">
-                </li>
-            </ul>
         </div>
+
+        <div class="wrapper__item">
+            <div class="slideshow" id="slideshow-2">
+                <div class="slideshow__display">
+                    <img src="../images/slideshow/display/1.jpg" alt="" class="slideshow__image _main">
+                </div>
+
+                <ul class="slideshow__list">
+                    <li class="slideshow__item _active">
+                        <img src="../images/slideshow/miniature/1.jpg" alt="" class="slideshow__image" data-src="../images/slideshow/display/1.jpg">
+                    </li>
+                    <li class="slideshow__item">
+                        <img src="../images/slideshow/display/2.jpg" alt="" class="slideshow__image">
+                    </li>
+                    <li class="slideshow__item">
+                        <img src="../images/slideshow/miniature/3.jpg" alt="" class="slideshow__image" data-src="../images/slideshow/display/3.jpg">
+                    </li>
+                    <li class="slideshow__item">
+                        <img src="../images/slideshow/display/4.jpg" alt="" class="slideshow__image">
+                    </li>
+                    <li class="slideshow__item">
+                        <img src="../images/slideshow/miniature/5.jpg" alt="" class="slideshow__image" data-src="../images/slideshow/display/5.jpg">
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+
 
     </div>
 
     <script src="../scripts/bundle.js"></script>
     <script>
-        let element = document.querySelector('.slideshow');
-
-//        nc.modules.slideshow(element);
+        let slideshow1 = document.querySelector('#slideshow-1'),
+            slideshow2 = document.querySelector('#slideshow-2');
 
         new nc.modules.slideshowClass({
-            element: element
+            element: slideshow1
         });
 
+        new nc.modules.slideshowClass({
+            element: slideshow2
+        });
+
+//        nc.modules.slideshow(slideshow1);
+
         /* jQuery */
-//         $(element).slideshow();
+//         $(slideshow1).slideshow();
     </script>
 </body>
 </html>

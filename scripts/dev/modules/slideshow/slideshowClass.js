@@ -15,39 +15,37 @@ nc.modules.slideshowClass = ( () => {
         active: '_active'
     },
         TEXT = {
-            src: 'src'
+            src: 'src',
+            ms: 'ms'
     };
 
-    let self;
 
     class Slideshow {
         constructor(options) {
-            this.parent = options.element;
-            this.init();
-            self = this;
+            this.init(options);
         }
 
 
-        init() {
-            this.initVars();
+        init(options) {
+            this.initVars(options);
             this.bindEvents();
         }
 
 
-        initVars() {
+        initVars(options) {
+            this.parent = options.element;
             this.display = this.parent.querySelector('.' + SELECTORS.display);
             this.mainImage = this.display.querySelector('.' + SELECTORS.image);
             this.list = this.parent.querySelector('.' + SELECTORS.list);
             this.lastItem = this.list.querySelector('.' + SELECTORS.active) || null;
-            this.duration = parseInt(getComputedStyle(this.mainImage).transitionDuration) * 500 || 500;
+            this.duration = getDuration.call(this);
 
             changeImage = debounce(changeImage, this.duration);
         }
 
 
         bindEvents() {
-            /*events*/
-            this.list.addEventListener('click', changeImage);
+            this.list.addEventListener('click', changeImage.bind(this));
         }
     }
 
@@ -58,59 +56,72 @@ nc.modules.slideshowClass = ( () => {
     function changeImage(e) {
         let target = e.target;
 
-        self.item = target.closest('.' + SELECTORS.item);
+        this.item = target.closest('.' + SELECTORS.item);
 
-        if (!self.item || self.item === self.lastItem) {
+        if (!this.item || this.item === this.lastItem) {
             return;
         }
 
-        self.image = self.item.querySelector('.' + SELECTORS.image);
-        self.src = getNewSrc();
+        this.image = this.item.querySelector('.' + SELECTORS.image);
+        this.src = getNewSrc.call(this);
 
-        changeActiveMiniature();
+        changeActiveMiniature.call(this);
 
-        self.lastItem = self.item;
+        this.lastItem = this.item;
 
-        hideImage();
+        hideImage.call(this);
     }
 
 
     /*Get new src*/
     function getNewSrc() {
-        return self.image.dataset.src || self.image.getAttribute(TEXT.src);
+        return this.image.dataset.src || this.image.getAttribute(TEXT.src);
     }
 
 
     /*Set new src*/
     function setNewSrc() {
-        self.mainImage.src = self.src;
+        this.mainImage.src = this.src;
+    }
+
+
+    /*Get duration*/
+    function getDuration() {
+        let cssDuration = getComputedStyle(this.mainImage).transitionDuration,
+            parseDuration =  parseInt(cssDuration);
+
+        if (cssDuration.indexOf(TEXT.ms) === -1) {
+            return parseDuration * 1000;
+        }
+
+        return parseDuration;
     }
 
 
     /*Change active miniature*/
     function changeActiveMiniature() {
-        self.item.classList.add(SELECTORS.active);
+        this.item.classList.add(SELECTORS.active);
 
-        if (self.lastItem) {
-            self.lastItem.classList.remove(SELECTORS.active);
+        if (this.lastItem) {
+            this.lastItem.classList.remove(SELECTORS.active);
         }
     }
 
 
     /*Hide image*/
     function hideImage() {
-        self.mainImage.style.opacity = 0;
+        this.mainImage.style.opacity = 0;
 
         setTimeout(() => {
-            setNewSrc();
-            showImage();
-        }, self.duration);
+            setNewSrc.call(this);
+            showImage.call(this);
+        }, this.duration);
     }
 
 
     /*Show image*/
     function showImage() {
-        self.mainImage.style.opacity = 1;
+        this.mainImage.style.opacity = 1;
     }
 
 

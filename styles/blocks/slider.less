@@ -3,10 +3,11 @@
     @width: 100%;
     @height: 250px;
 
+    position: relative;
     display: flex;
     width: 500px;
     height: @height;
-    background-color: fade(@black-00, 50%);
+    outline: 1px solid lightcoral;
 
     & + & {
         margin-left: 10px;
@@ -28,7 +29,7 @@
         height: @height;
         align-items: center;
         justify-content: center;
-        background-color: lightblue;
+        background-color: @white-ff;
 
         &._active {
             position: relative;
@@ -47,7 +48,23 @@
     }
 
     &__arrow {
+        position: absolute;
+        top: 50%;
+        width: 50px;
+        height: 50px;
+        transform: translateY(-50%);
         align-self: center;
+        .icon_arrow;
         cursor: pointer;
+        z-index: 10;
+
+        &._left {
+            left: 0;
+        }
+
+        &._right {
+            right: 0;
+            transform: rotate(180deg) translateY(50%);
+        }
     }
 }
